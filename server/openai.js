@@ -12,7 +12,7 @@ module.exports = {
       },
       body: JSON.stringify({
         prompt: sentence,
-        max_tokens: 100
+        max_tokens: 20
       })
     };
     request(options, function(error, response, body) {
