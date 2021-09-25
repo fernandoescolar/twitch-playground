@@ -1,0 +1,64 @@
+.blue { color: #0B9BD7; }
+.yellow { color: #FBCF08; }
+.red { color: #E42926; }
+.green { color: #45AF49; }
+
+#snackbar-panel {
+  position: fixed;
+  right: 30px;
+}
+
+.snackbar {
+  font-family: "Super Mario";
+  font-size: 38px;
+  visibility: hidden;
+  width: 500px;
+  margin-left: -125px;
+  background-color: rgb(48, 47, 47);
+  color: #fff;
+  text-align: center;
+  /*border-radius: 4px;*/
+  padding: 16px;
+  z-index: 1;
+  margin-top: 30px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+}
+
+.snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+  opacity: 0.8;
+}
+
+.snackbar.hidden {
+  visibility: visible;
+  -webkit-animation: fadeout 0.5s;
+  animation: fadeout 0.5s;
+  opacity: 0.0;
+}
+
+.snackbar.message {
+  text-align: left;
+  font-size: 32px;
+}
+
+@-webkit-keyframes fadein {
+  from {margin-top: 0; opacity: 0;}
+  to {margin-top: 30px; opacity: 0.8;}
+}
+
+@keyframes fadein {
+  from {margin-top: 0; opacity: 0;}
+  to {margin-top: 30px; opacity: 0.8;}
+}
+
+@-webkit-keyframes fadeout {
+  from {margin-top: 30px; opacity: 0.8;}
+  to {margin-top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {margin-top: 30px; opacity: 0.8;}
+  to {margin-top: 0; opacity: 0;}
+}
