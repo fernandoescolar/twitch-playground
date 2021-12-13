@@ -13,6 +13,10 @@ io.on('connection', socket => {
     socket.on('new-message', (data) => {
       io.sockets.emit('show-message', data);
     });
+
+    socket.on('sound', (data) => {
+      io.sockets.emit('play-sound', data);
+    });
 });
 
 module.exports = {
@@ -20,6 +24,6 @@ module.exports = {
       io.sockets.emit('show-message', data);
     },
     sendMessages: () => {
-        io.sockets.emit('messages', store.getMessages());
+      io.sockets.emit('messages', store.getMessages());
     }
 };

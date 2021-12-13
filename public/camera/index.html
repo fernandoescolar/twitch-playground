@@ -1,0 +1,84 @@
+<html lang="es">
+    <head>
+	    <meta charset="UTF-8">
+		<meta name="robots" content="noindex">
+
+		<title>Camera</title>
+
+		<style>
+		   *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+
+          body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+          }
+
+          @keyframes rotate {
+            100% {
+              transform: rotate(1turn);
+            }
+          }
+
+          .rainbow {
+            position: relative;
+            z-index: 0;
+            width: calc(100% - 25px);
+            height: calc(100% - 40px);
+            /*width: 475px;
+            height: 360px;*/
+            /*border-radius: 10px;*/
+            overflow: hidden;
+            padding: 2rem;
+            box-shadow:
+			  0 0 5px cyan,
+			  0 0 5px cyan,
+			  0 0 10px magenta,
+			  0 0 5px magenta,
+			  0 0 5px magenta,
+			  inset 0 0 1.3rem #bc13fe;
+          }
+
+          .rainbow::before {
+            content: "";
+            position: absolute;
+            z-index: -2;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            /*background-color: #399953;*/
+            background-repeat: no-repeat;
+            background-size: 50% 50%, 50% 50%;
+            background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+            background-image:
+			  linear-gradient(magenta, cyan),
+			  linear-gradient(magenta, cyan),
+			  linear-gradient(cyan, magenta),
+			  linear-gradient(cyan, magenta);
+            animation: rotate 10s linear infinite;
+          }
+
+          .rainbow::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 20px;
+            top: 20px;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            background: white;
+            /*border-radius: 5px;*/
+          }
+        </style>
+    </head>
+    <body>
+        <div class="rainbow">
+        </div>
+    </body>
+</html>

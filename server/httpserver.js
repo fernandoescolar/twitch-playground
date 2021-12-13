@@ -5,8 +5,10 @@ var server = require('http').Server(app);
 app.use(express.static('public'));
 
 server.listen(8080, function () {
-  console.log('Cliente http://localhost:8080');
-  console.log('Manager http://localhost:8080/manager.html');
+  console.log('Manager http://localhost:8080/manager');
+  console.log('OBS Overlays:');
+  console.log(' - notification:  http://localhost:8080/notifications')
+  console.log(' - camera:        http://localhost:8080/camera');
 });
 
 module.exports = server;

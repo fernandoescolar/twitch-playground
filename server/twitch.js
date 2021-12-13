@@ -13,10 +13,10 @@ const client = new tmi.Client({
     secure: true,
     reconnect: true
   },
-  identity: {
-    username: 'Bot',
-    password: `${process.env.TWITCH_OAUTH}`
-  },
+  // identity: {
+  //   username: 'Bot',
+  //   password: `${process.env.TWITCH_OAUTH}`
+  // },
   channels: [ 'fernandoescolar' ]
 });
 
@@ -33,19 +33,19 @@ client.on('message', (channel, tags, message, self) => {
     }
   }
 
-  if (tags['display-name'] !== 'StreamElements' && !message.startsWith('[bot]')) {
-    let conversation = 'We are in a Twitch meeting. The channel name is "fernandoescolar". And we talk about programming.\n';
-    store.getMessages().forEach(m => {
-        conversation += `- ${m.author}: ${m.text}`;
-    });
-    conversation += '- @Bot: ';
-    console.log('asking gpt3....');
-    openai.complete(conversation, d => {
-      console.log(d);
-      const json = JSON.parse(d);
-      client.say(channel, `[bot] ${json.choices[0].text}`);
-    });
-  }
+  // if (tags['display-name'] !== 'StreamElements' && !message.startsWith('[bot]')) {
+  //   let conversation = 'We are in a Twitch meeting. The channel name is "fernandoescolar". And we talk about programming.\n';
+  //   store.getMessages().forEach(m => {
+  //       conversation += `- ${m.author}: ${m.text}`;
+  //   });
+  //   conversation += '- @Bot: ';
+  //   console.log('asking gpt3....');
+  //   openai.complete(conversation, d => {
+  //     console.log(d);
+  //     const json = JSON.parse(d);
+  //     client.say(channel, `[bot] ${json.choices[0].text}`);
+  //   });
+  // }
 
   store.addMessage(data);
   sockets.sendMessages();

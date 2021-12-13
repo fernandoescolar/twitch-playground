@@ -9,16 +9,21 @@ const colors = [ 'blue', 'yellow', 'red', 'green' ];
 let index = 0;
 
 function formatColors(text) {
-  let c = 0;
-  let result = '';
-  for (var i = 0; i < text.length; i++) {
-    result += `<span class="${colors[c]}">${text.charAt(i)}</span>`;
+  // let c = 0;
+  // let result = '';
+  // for (var i = 0; i < text.length; i++) {
+  //   result += `<span class="${colors[c]}">${text.charAt(i)}</span>`;
 
-    c++;
-    if (c >= colors.length) c = 0;
+  //   c++;
+  //   if (c >= colors.length) c = 0;
+  // }
+
+  // return result;
+  if (text.startsWith('@')) {
+    text = text.substring(1);
   }
 
-  return result;
+  return `<span class="title">${text}</span>`;
 }
 
 function showSnackbar(content, ttl, callback, cssClass) {
@@ -65,4 +70,12 @@ next();
 var socket = io.connect("http://localhost:8080", { forceNew: true });
 socket.on("show-message", function (m) {
   showSnackbar(`${formatColors(m.author)}: ${m.text}`, interval_in_seconds, null, 'message');
+});
+socket.on("play-sound", function (m) {
+  const e = document.getElementById(m);
+  if (e) {
+    e.load();
+    e.currentTime = 0;
+    e.play();
+  }
 });

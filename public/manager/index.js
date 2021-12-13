@@ -36,3 +36,16 @@ function renderMessage(elem) {
   element.appendChild(button);
   document.getElementById('messages').appendChild(element);
 }
+
+function audioAttach() {
+  const elems = document.querySelectorAll('.audio');
+  elems.forEach((elem) => {
+    elem.onclick = function () {
+      socket.emit("sound", elem.id);
+    }
+  });
+}
+
+window.onload = function () {
+  audioAttach();
+};

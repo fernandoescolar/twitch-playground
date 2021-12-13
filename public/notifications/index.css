@@ -7,9 +7,13 @@
   position: fixed;
   right: 30px;
 }
-
+.title {
+  font-family: "8-Bitified";
+  color: #FBCF08;
+  font-size: 28px;
+}
 .snackbar {
-  font-family: "Super Mario";
+  font-family: "Pixel Operator HB";
   font-size: 38px;
   visibility: hidden;
   width: 500px;
